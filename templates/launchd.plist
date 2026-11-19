@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>account-load-balancer.cc-usage</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>@ZSH@</string>
+    <string>@SCRIPT@</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>@LOG@</string>
+  <key>StandardErrorPath</key>
+  <string>@LOG@</string>
+</dict>
+</plist>

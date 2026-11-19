@@ -1,0 +1,12 @@
+#!/bin/zsh
+# 测试用 curl 替身：按请求中的令牌返回固定的用量。
+args="$*"
+case $args in
+  (*"Bearer cx-1"*) print '{"rate_limit":{"primary_window":{"used_percent":30},"secondary_window":{"used_percent":50}}}'; print 200 ;;
+  (*"Bearer cx-2"*) print '{"rate_limit":{"primary_window":{"used_percent":10},"secondary_window":{"used_percent":20}}}'; print 200 ;;
+  (*"Bearer cx-3"*) print '{}'; print 401 ;;
+  (*"Bearer acc-2"*)
+    out=${${args#*-o }%% *}
+    print '{"five_hour":{"utilization":7},"seven_day":{"utilization":45}}' > $out; print -n 200 ;;
+  (*) print '{}'; print 500 ;;
+esac

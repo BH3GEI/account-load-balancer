@@ -1,0 +1,13 @@
+#!/bin/zsh
+# 测试用 security 替身（macOS 钥匙串）：读取测试目录中的文件，代替真实钥匙串。
+args="$*"
+svc=${${args#*-s }%% -w*}
+case $svc in
+  (cc-longtoken-*) f=$ALB_STATE/tokens/claude-${svc#cc-longtoken-} ;;
+  ("Claude Code-credentials-"*)
+    for d in $ALB_BASE/.claude-cc*; do
+      [[ "Claude Code-credentials-$(printf %s "$d" | shasum -a 256 | cut -c1-8)" == $svc ]] && f=$d/.credentials.json
+    done ;;
+esac
+[[ -n $f && -r $f ]] && { cat $f; exit 0 }
+exit 44

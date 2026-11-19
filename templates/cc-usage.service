@@ -1,0 +1,6 @@
+[Unit]
+Description=account-load-balancer: refresh Claude Code usage
+
+[Service]
+Type=oneshot
+ExecStart=@ZSH@ @SCRIPT@

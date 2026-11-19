@@ -1,0 +1,5 @@
+#!/bin/zsh
+# 测试用 claude 替身：用长期令牌发送最小请求时，输出一条带用量的 rate_limit_event。
+[[ $CLAUDE_CODE_OAUTH_TOKEN == long-1 ]] || exit 1
+print '{"type":"rate_limit_event","rate_limit_info":{"unifiedWindows":{"five_hour":{"utilization":0.12},"seven_day":{"utilization":0.34}}}}'
+print '{"type":"result","result":"ok"}'

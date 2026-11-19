@@ -1,0 +1,9 @@
+[Unit]
+Description=account-load-balancer: refresh Claude Code usage daily
+
+[Timer]
+OnCalendar=*-*-* 09:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
